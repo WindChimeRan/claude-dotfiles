@@ -1,25 +1,29 @@
-"""Plot memory timelines captured by metalstat_logger.
+"""Plot memory timelines captured by `metalstat run --jsonl`.
 
 Usage
 -----
     # Single run
     python plot_timeline.py --out timeline.png \\
-        --pair "memory_cap_v2=/tmp/metalstat.jsonl"
+        --pair "memory_cap_v2=/tmp/run.jsonl"
 
     # Two-run comparison (the most common use case)
     python plot_timeline.py --out compare.png \\
         --title "vllm-metal · memory_cap_v2 vs main · fraction=0.25" \\
-        --pair "main=/tmp/metalstat_main.jsonl" \\
-        --pair "memory_cap_v2=/tmp/metalstat_memcap.jsonl"
+        --pair "main=/tmp/run_main.jsonl" \\
+        --pair "memory_cap_v2=/tmp/run_memcap.jsonl"
+
+Input JSONL is the flat schema produced by metalstat >= 0.1.4; each line has
+`elapsed_s`, `mem_used_gb`, `mem_wired_gb`, `mem_active_gb`,
+`mem_pressure_pct`, plus other fields this plotter ignores.
 
 The comparison layout is a 2x2 grid:
-  top-left:     per-branch timeline for run A (wired_gb + used_gb)
-  top-right:    per-branch timeline for run B (wired_gb + used_gb)
-  bottom-left:  wired_gb overlay (the headline — shape comparison)
+  top-left:     per-branch timeline for run A (wired + used)
+  top-right:    per-branch timeline for run B (wired + used)
+  bottom-left:  wired overlay (the headline — shape comparison)
   bottom-right: memory pressure overlay with green/yellow/red bands
 
 Single-run layout is a 1x2 grid:
-  left:  wired_gb / used_gb / active_gb timeline
+  left:  wired / used / active timeline
   right: memory pressure timeline with zone bands
 """
 from __future__ import annotations
@@ -39,7 +43,7 @@ COLORS = ["#5b9bd5", "#e06030"]
 
 
 def load(path: str) -> list[dict]:
-    """Load a JSONL file produced by metalstat_logger, skipping error lines."""
+    """Load a JSONL file produced by `metalstat run`, skipping malformed lines."""
     out: list[dict] = []
     with open(path) as f:
         for line in f:
@@ -50,7 +54,7 @@ def load(path: str) -> list[dict]:
                 d = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            if "elapsed_s" in d and "memory" in d:
+            if "elapsed_s" in d and "mem_wired_gb" in d:
                 out.append(d)
     return out
 
@@ -58,10 +62,10 @@ def load(path: str) -> list[dict]:
 def series(samples: list[dict]) -> dict[str, list[float]]:
     return {
         "t": [s["elapsed_s"] for s in samples],
-        "used": [s["memory"]["used_gb"] for s in samples],
-        "wired": [s["memory"]["wired_gb"] for s in samples],
-        "active": [s["memory"]["active_gb"] for s in samples],
-        "press": [s["memory"]["pressure_percent"] for s in samples],
+        "used": [s["mem_used_gb"] for s in samples],
+        "wired": [s["mem_wired_gb"] for s in samples],
+        "active": [s["mem_active_gb"] for s in samples],
+        "press": [s["mem_pressure_pct"] for s in samples],
     }
 
 

@@ -1,0 +1,3 @@
+[submodule "skills/ako4all"]
+	path = skills/ako4all
+	url = https://github.com/TongmingLAIC/AKO4ALL.git
