@@ -35,11 +35,12 @@ Personal Claude Code configuration: slash commands, skills, and global config, s
 |---|---|---|
 | `CLAUDE.md` | `~/.claude/CLAUDE.md` | Global working principles (source-truth / honest provenance) |
 | `statusline-script.sh` | `~/.claude/statusline-script.sh` | Status line script (time · dir · git branch · model) |
-| `settings.json` | `~/.claude/settings.json` | Global settings — model, effort level, theme, status line, attribution |
 
-`~/.claude/settings.local.json` is deliberately **not** tracked: it holds per-machine
-permission grants (this host allows `nvidia-smi`, `systemctl status`, …), which do not
-transfer to another machine. Keep host-specific settings there.
+`~/.claude/settings.json` and `~/.claude/settings.local.json` are deliberately **not**
+tracked. `settings.json` holds per-machine preferences (theme, TUI mode, status line
+binary, enabled plugins, voice) and `settings.local.json` holds per-machine permission
+grants (this host allows `nvidia-smi`, `systemctl status`, …). Neither transfers cleanly
+to another machine. Keep host-specific settings there.
 
 ## Setup
 
@@ -51,7 +52,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-`install.sh` symlinks `commands/`, `skills/`, `CLAUDE.md`, `statusline-script.sh`, and `settings.json` into `~/.claude/`. Any pre-existing real file/dir is moved aside to `*.bak` first — so on a machine that already has a `settings.json`, check `settings.json.bak` for anything worth merging back. Edits in either location are then reflected immediately.
+`install.sh` symlinks `commands/`, `skills/`, `CLAUDE.md`, and `statusline-script.sh` into `~/.claude/`. Any pre-existing real file/dir is moved aside to `*.bak` first. Edits in either location are then reflected immediately.
 
 If you cloned without `--recurse-submodules`, initialize the `ako4all` submodule afterward:
 
