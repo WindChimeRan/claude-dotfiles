@@ -32,11 +32,13 @@ for dir in commands skills; do
     link "$dir"
 done
 
-# Individual config files
-for file in CLAUDE.md statusline-script.sh; do
+# Individual config files. settings.local.json is deliberately absent: it holds
+# per-machine permission grants, so each host keeps its own.
+for file in CLAUDE.md statusline-script.sh settings.json; do
     link "$file"
 done
 
 echo ""
-echo "Done. Your commands, skills, CLAUDE.md and statusline-script.sh are now symlinked from this repo."
+echo "Done. Your commands, skills, CLAUDE.md, statusline-script.sh and settings.json"
+echo "are now symlinked from this repo."
 echo "Edits in either location are reflected immediately; commit & push from $REPO_DIR to sync."

@@ -9,6 +9,7 @@ Personal Claude Code configuration: slash commands, skills, and global config, s
 | Command | Description |
 |---|---|
 | `/discuss` | Discussion mode — no code edits, just talk |
+| `/pr-artifact-explain` | Explain a PR from scratch for a newcomer, published as an Artifact (read-only) |
 | `/pr-rebuttal` | Investigate PR review comments, give a structured verdict per point (no edits/posting) |
 | `/sync-upstream` | Sync local main with upstream main, then push to origin |
 
@@ -23,7 +24,9 @@ Personal Claude Code configuration: slash commands, skills, and global config, s
 | `html-metal-explainer` | Generate educational HTML explainers for Metal GPU kernels (vllm-metal) |
 | `jekyll-post-preview` | Build & screenshot a Jekyll/al-folio post (light + dark) to verify rendering |
 | `memstat-bench` | Plot a per-second memory timeline during a vllm-metal benchmark |
+| `no-ai-slop` | Edit drafts sharper while keeping the writer's voice, or detect AI-slop without rewriting *(vendored from [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop), MIT)* |
 | `paper_rebuttal` | Strategic patterns for writing strong academic peer-review rebuttals |
+| `refactor-pr-check` | Checklist for preparing or reviewing a refactor PR — faithful, minimal, reviewable, verified |
 | `writing-style` | Technical writing style guide for editing prose |
 
 ### Global config (repo root)
@@ -32,6 +35,11 @@ Personal Claude Code configuration: slash commands, skills, and global config, s
 |---|---|---|
 | `CLAUDE.md` | `~/.claude/CLAUDE.md` | Global working principles (source-truth / honest provenance) |
 | `statusline-script.sh` | `~/.claude/statusline-script.sh` | Status line script (time · dir · git branch · model) |
+| `settings.json` | `~/.claude/settings.json` | Global settings — model, effort level, theme, status line, attribution |
+
+`~/.claude/settings.local.json` is deliberately **not** tracked: it holds per-machine
+permission grants (this host allows `nvidia-smi`, `systemctl status`, …), which do not
+transfer to another machine. Keep host-specific settings there.
 
 ## Setup
 
@@ -43,7 +51,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-`install.sh` symlinks `commands/`, `skills/`, `CLAUDE.md`, and `statusline-script.sh` into `~/.claude/`. Any pre-existing real file/dir is moved aside to `*.bak` first. Edits in either location are then reflected immediately.
+`install.sh` symlinks `commands/`, `skills/`, `CLAUDE.md`, `statusline-script.sh`, and `settings.json` into `~/.claude/`. Any pre-existing real file/dir is moved aside to `*.bak` first — so on a machine that already has a `settings.json`, check `settings.json.bak` for anything worth merging back. Edits in either location are then reflected immediately.
 
 If you cloned without `--recurse-submodules`, initialize the `ako4all` submodule afterward:
 
