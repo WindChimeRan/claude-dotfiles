@@ -37,7 +37,7 @@ Personal Claude Code configuration: slash commands, skills, and global config, s
 
 | File | Linked to | Description |
 |---|---|---|
-| `CLAUDE.md` | `~/.claude/CLAUDE.md` | Global working principles (source-truth / honest provenance) |
+| `CLAUDE.md` | `~/.claude/CLAUDE.md` | Global agent instructions (writing, reasoning, git, this machine), shared with Codex via `~/.codex/AGENTS.md` |
 | `statusline-script.sh` | `~/.claude/statusline-script.sh` | Status line script (time · dir · git branch · model) |
 
 `~/.claude/settings.json` and `~/.claude/settings.local.json` are deliberately **not**
