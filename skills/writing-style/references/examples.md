@@ -10,14 +10,6 @@ After:
 
 The numbers already said it.
 
-## Throat-clearing
-
-Before:
-> A quick cost-of-memory comparison helps explain the motivation. An NVIDIA RTX 5090 ships with...
-
-After:
-> An NVIDIA RTX 5090 ships with...
-
 ## Roadmap narration
 
 Before:
@@ -27,21 +19,6 @@ After:
 > To compare the three engines below, we use a common vocabulary:
 
 The subsection headers (### vLLM, ### mistral.rs, ### llama.cpp) already tell the reader what's coming.
-
-## Boilerplate sign-off
-
-Before:
-> This post describes the problem in detail, surveys related work, and proposes a redesigned memory allocation path for vllm-metal that is honest about its memory model and adapts to Apple Silicon's shared-memory reality.
-
-After: deleted. The TOC communicates structure; "honest about its memory model" is editorializing.
-
-## Cliche emphasis
-
-Before:
-> **llama.cpp** sidesteps dynamic budget computation entirely. It uses the memory hint as its ceiling...
-
-After:
-> **llama.cpp** uses the memory hint as its ceiling...
 
 ## Overclaiming
 

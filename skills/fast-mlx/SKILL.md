@@ -1,6 +1,7 @@
 ---
 name: fast-mlx
 description: Optimize MLX code for performance and memory. Use when asked to implement or speed up MLX models or algorithms, reduce latency/throughput bottlenecks, tune lazy evaluation, type promotion, fast ops, compilation, memory use, or profiling.
+disable-model-invocation: true
 ---
 
 # Fast MLX

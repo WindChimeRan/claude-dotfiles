@@ -1,6 +1,7 @@
 ---
 name: writing-style
 description: "Technical writing style guide for editing blog posts, research write-ups, documentation, and public-facing responses (paper rebuttals, review replies, public comments). Use when reviewing, editing, or drafting technical prose — especially when asked to 'check', 'review', 'edit', or 'fix' writing, when writing new sections for an existing post, or when drafting or trimming a response that will be posted publicly."
+disable-model-invocation: true
 ---
 
 # Writing Style Guide
@@ -12,11 +13,8 @@ Every sentence must carry information the reader does not already have. If remov
 ## Eliminate
 
 1. **Restating evidence as prose** — if numbers or formulas already made the point, do not add a summary sentence.
-2. **Throat-clearing** — drop setup sentences ("A quick comparison helps explain...", "It is worth noting that...").
-3. **Roadmap narration** — if headers or a TOC already communicate structure, do not narrate it ("We first review X. We then examine Y.").
-4. **Cliche emphasis** — avoid "entirely", "surprisingly", "notably", "importantly" and similar filler adverbs. Say what it does, not how impressed the reader should be.
-5. **Boilerplate sign-off sentences** — "This post describes X, surveys Y, and proposes Z" adds nothing when the TOC already exists.
-6. **Em dashes** — do not use "—" in sentences. Use periods, commas, or restructure instead.
+2. **Roadmap narration** — if headers or a TOC already communicate structure, do not narrate it ("We first review X. We then examine Y.").
+3. **Em dashes** — do not use "—" in sentences. Use periods, commas, or restructure instead.
 
 ## Constraints
 

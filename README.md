@@ -24,10 +24,14 @@ Personal Claude Code configuration: slash commands, skills, and global config, s
 | `html-metal-explainer` | Generate educational HTML explainers for Metal GPU kernels (vllm-metal) |
 | `jekyll-post-preview` | Build & screenshot a Jekyll/al-folio post (light + dark) to verify rendering |
 | `memstat-bench` | Plot a per-second memory timeline during a vllm-metal benchmark |
-| `no-ai-slop` | Edit drafts sharper while keeping the writer's voice, or detect AI-slop without rewriting *(vendored from [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop), MIT)* |
+| `no-ai-slop` | Edit drafts sharper while keeping the writer's voice, or detect AI-slop without rewriting *(adapted from [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop), MIT)* |
 | `paper_rebuttal` | Strategic patterns for writing strong academic peer-review rebuttals |
+| `ponytail` | Lazy senior dev mode: the smallest change that fully solves the task *(adapted from [dietrichgebert/ponytail](https://github.com/dietrichgebert/ponytail), MIT)* |
 | `refactor-pr-check` | Checklist for preparing or reviewing a refactor PR — faithful, minimal, reviewable, verified |
 | `writing-style` | Technical writing style guide for editing prose |
+
+`/discuss`, `/pr-rebuttal`, `fast-mlx`, `no-ai-slop`, `ponytail`, `refactor-pr-check` and
+`writing-style` set `disable-model-invocation: true`: they run only when called by name.
 
 ### Global config (repo root)
 
