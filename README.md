@@ -11,7 +11,7 @@ Personal Claude Code configuration: slash commands, skills, and global config, s
 | `/discuss` | Discussion mode — no code edits, just talk |
 | `/pr-artifact-explain` | Explain a PR from scratch for a newcomer, published as an Artifact (read-only) |
 | `/pr-rebuttal` | Investigate PR review comments, give a structured verdict per point (no edits/posting) |
-| `/sync-upstream` | Sync local main with upstream main, then push to origin |
+| `/sync-upstream` | Fast-forward local main to the project's main (`upstream`), then push it to my fork (`origin`) |
 
 ### Skills (`skills/`)
 
@@ -30,8 +30,9 @@ Personal Claude Code configuration: slash commands, skills, and global config, s
 | `refactor-pr-check` | Checklist for preparing or reviewing a refactor PR — faithful, minimal, reviewable, verified |
 | `writing-style` | Technical writing style guide for editing prose |
 
-`/discuss`, `/pr-rebuttal`, `fast-mlx`, `no-ai-slop`, `ponytail`, `refactor-pr-check` and
-`writing-style` set `disable-model-invocation: true`: they run only when called by name.
+`/discuss`, `/pr-rebuttal`, `/sync-upstream`, `fast-mlx`, `no-ai-slop`, `ponytail`,
+`refactor-pr-check` and `writing-style` set `disable-model-invocation: true`: they run only
+when called by name.
 
 ### Global config (repo root)
 
